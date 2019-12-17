@@ -32,8 +32,7 @@ case $input in
 			5)cd /var/www/html
 				unzip 3.1.11
 				read -p "CodeIgniter project name is: " project
-				sudo mv CodeIgniter-3.1.11 $project
-			;;
+				sudo mv CodeIgniter-3.1.11 $project;;
 			5)cd /tmp
 				curl -sS https://getcomposer.org/installer | php
 				sudo mv composer.phar /usr/local/bin/composer
