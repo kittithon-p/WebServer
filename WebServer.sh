@@ -6,11 +6,12 @@ echo "[1] Update"
 echo "[2] Install Apache"
 echo "[3] Install MySQL"
 echo "[4] Installing Laravel"
-echo "[5] Create-Project Laravel"
-echo "[6] Set VirtualHost"
-echo "[7] Restart Apache2"
-echo "[8] Restart All"
-echo "[9] EXIT"
+echo "[5] Installing CodeIgniter"
+echo "[6] Create-Project Laravel"
+echo "[7] Set VirtualHost"
+echo "[8] Restart Apache2"
+echo "[9] Restart All"
+echo "[10] EXIT"
 echo "......................................."
 read -p "Please enter the number : " input
 case $input in
@@ -25,26 +26,29 @@ case $input in
                 sudo apt-get install phpmyadmin -y
                 sudo ln -s /usr/share/phpmyadmin /var/www/html
                 sudo service apache2 restart;;
-			4)cd /tmp
+				
+			5)clone git@github.com:bcit-ci/CodeIgniter.git;;
+			5)cd /tmp
 				curl -sS https://getcomposer.org/installer | php
-				sudo mv composer.phar /usr/local/bin/composer;;
+				sudo mv composer.phar /usr/local/bin/composer
+				sudo composer global require laravel/installer;;
 
-			5)cd /var/www/html
-				read -p "laravel project name is: " project-name	
-				sudo composer create-project laravel/laravel $project --prefer-dist
+			6)cd /var/www/html
+				read -p "laravel project name is: " project-name
+				sudo laravel new $project
 				sudo chgrp -R www-data /var/www/html/$project
 				sudo chmod -R 775 /var/www/html/$project/storage;;
 				
-			6)cd /etc/apache2/sites-available
+			7)cd /etc/apache2/sites-available
 				sudo nano laravel.conf;;
 				
-			7)sudo service apache2 restart;;
+			8)sudo service apache2 restart;;
 			
-			8)sudo a2dissite 000-default.conf
+			9)sudo a2dissite 000-default.conf
 				sudo a2ensite laravel.conf
 				sudo a2enmod rewrite
 				sudo service apache2 restart;;
-			9)echo "END" ;exit;;
+			10)echo "END" ;exit;;
 			
         *);;
         esac
