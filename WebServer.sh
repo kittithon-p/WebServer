@@ -15,7 +15,9 @@ echo "[10] EXIT"
 echo "......................................."
 read -p "Please enter the number : " input
 case $input in
-			1)sudo apt update && sudo apt upgrade -y;;
+			1)sudo apt update && sudo apt upgrade -y
+				sudo apt-get install unp
+				sudo apt install unzip;;
 			
 			2)sudo apt-get install apache2 -y;; 
 			
@@ -27,15 +29,19 @@ case $input in
                 sudo ln -s /usr/share/phpmyadmin /var/www/html
                 sudo service apache2 restart;;
 				
-			5)clone git@github.com:bcit-ci/CodeIgniter.git;;
+			5)cd /var/www/html
+				unzip 3.1.11
+				read -p "CodeIgniter project name is: " project
+				sudo mv CodeIgniter-3.1.11 $project
+			;;
 			5)cd /tmp
 				curl -sS https://getcomposer.org/installer | php
 				sudo mv composer.phar /usr/local/bin/composer
 				sudo composer global require laravel/installer;;
 
 			6)cd /var/www/html
-				read -p "laravel project name is: " project-name
-				sudo laravel new $project
+				read -p "laravel project name is: " project
+				sudo sudo composer create-project laravel/laravel $project --prefer-dist
 				sudo chgrp -R www-data /var/www/html/$project
 				sudo chmod -R 775 /var/www/html/$project/storage;;
 				
