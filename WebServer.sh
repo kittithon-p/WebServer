@@ -29,31 +29,35 @@ case $input in
                 sudo ln -s /usr/share/phpmyadmin /var/www/html
                 sudo service apache2 restart;;
 				
+			4)cd /var/www/html
+			    wget https://github.com/bcit-ci/CodeIgniter/archive/3.1.11.zip
+				unzip 3.1.11.zip;;
+			
 			5)cd /var/www/html
-				unzip 3.1.11
 				read -p "CodeIgniter project name is: " project
 				sudo mv CodeIgniter-3.1.11 $project;;
-			5)cd /tmp
+				
+			6)cd /tmp
 				curl -sS https://getcomposer.org/installer | php
 				sudo mv composer.phar /usr/local/bin/composer
 				sudo composer global require laravel/installer;;
 
-			6)cd /var/www/html
+			7)cd /var/www/html
 				read -p "laravel project name is: " project
 				sudo sudo composer create-project laravel/laravel $project --prefer-dist
 				sudo chgrp -R www-data /var/www/html/$project
 				sudo chmod -R 775 /var/www/html/$project/storage;;
 				
-			7)cd /etc/apache2/sites-available
+			8)cd /etc/apache2/sites-available
 				sudo nano laravel.conf;;
 				
-			8)sudo service apache2 restart;;
+			9)sudo service apache2 restart;;
 			
-			9)sudo a2dissite 000-default.conf
+			10)sudo a2dissite 000-default.conf
 				sudo a2ensite laravel.conf
 				sudo a2enmod rewrite
 				sudo service apache2 restart;;
-			10)echo "END" ;exit;;
+			11)echo "END" ;exit;;
 			
         *);;
         esac
