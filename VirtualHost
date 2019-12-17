@@ -1,0 +1,30 @@
+
+<VirtualHost *:80>
+        ServerAdmin kittithon-cs-kku.tk
+        DocumentRoot /var/www/html/kittithon-cs-kku
+        ServerName kittithon-cs-kku.tk
+        ServerAlias www.kittithon-cs-kku.tk
+        <Directory /var/www/html/kittithon-cs-kku>
+                Options FollowSymLinks
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        </Directory>
+        ErrorLog /var/log/apache2/your_domain.com-error_log
+        CustomLog /var/log/apache2/your_domain.com-access_log common
+</VirtualHost>
+
+<VirtualHost *:80>
+        ServerAdmin wei-cs-kku.tk
+        DocumentRoot /var/www/html/wei-cs-kku/public/
+        ServerName wei-cs-kku.tk
+        ServerAlias www.wei-cs-kku.tk
+        <Directory /var/www/html/wei-cs-kku/>
+                Options FollowSymLinks
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        </Directory>
+        ErrorLog /var/log/apache2/your_domain.com-error_log
+        CustomLog /var/log/apache2/your_domain.com-access_log common
+</VirtualHost>
