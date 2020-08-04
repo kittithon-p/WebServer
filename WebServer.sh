@@ -12,7 +12,8 @@ echo "[7] Create-Project Laravel"
 echo "[8] Set VirtualHost"
 echo "[9] Restart Apache2"
 echo "[10] Restart All"
-echo "[11] EXIT"
+echo "[11] PHP 7.4"
+echo "[12] EXIT"
 echo "......................................."
 read -p "Please enter the number : " input
 case $input in
@@ -58,7 +59,12 @@ case $input in
 				sudo a2ensite laravel.conf
 				sudo a2enmod rewrite
 				sudo service apache2 restart;;
-			11)echo "END" ;exit;;
+			11)sudo apt install software-properties-common
+				sudo add-apt-repository ppa:ondrej/php
+				sudo apt update
+				sudo apt install php7.4 -y
+				sudo apt install php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl -y;;
+			12)echo "END" ;exit;;
 			
         *);;
         esac
