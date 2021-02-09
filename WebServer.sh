@@ -12,7 +12,7 @@ case $input in
                                 sudo apt-get install unp
                                 sudo apt install unzip;;
                         2)sudo apt update
-				sudo apt install apache2
+				sudo apt install apache2 -y
 				sudo ufw app list
 				sudo ufw allow in "Apache"
 				sudo ufw status
