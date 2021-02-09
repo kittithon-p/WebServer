@@ -8,7 +8,7 @@ echo "[3] Exit"
 echo "......................................."
 read -p "Please enter the number : " input
 case $input in
-                        1)sudo apt update && sudo apt upgrade -y
+                        1)sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y
                                 sudo apt-get install unp
                                 sudo apt install unzip;;
                         2)sudo apt update
